@@ -34,6 +34,9 @@ def dummy_ok(name=None):
 def index(filepath):
     return static_file(filepath, root='.')
 
+@route('/')
+def home():
+    return static_file('index.html', root='.')
 
 # Note that this will run either Python 2 or 3, depending on which
 # version of Python you used to start the server, REGARDLESS of which
