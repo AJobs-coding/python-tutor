@@ -1,78 +1,28 @@
-Python Tutor -- http://pythontutor.com/ -- helps people overcome a fundamental barrier to learning programming: understanding what happens as the computer executes each line of a program's source code. Using this tool, you can write Python, Java, JavaScript, TypeScript, Ruby, C, and C++ programs in your Web browser and visualize what the computer is doing step-by-step as it executes those programs.
+Python Tutor -- http://pythontutor.com/ -- 帮助人们克服学习编程的基本障碍: 理解当计算机执行程序源代码的每一行时会发生什么。 使用这个工具，你可以在你的Web浏览器中写Python, Java,
+JavaScript, TypeScript, Ruby, C, 和 C++ 程序。并可视化计算机在执行这些程序时逐步执行的操作。
 
-This tool was created by [Philip Guo](http://pgbovine.net/) in January 2010. [See project history](history.txt).
+该工具由 [Philip Guo](http://pgbovine.net/) 于 2010 年 1 月创建。 [查看项目历史](history.txt).
 
-[List of unsupported features and known bugs](https://github.com/pgbovine/OnlinePythonTutor/blob/master/unsupported-features.md)
+[不支持的功能和已知错误列表](./unsupported-features.md)
 
-The latest development version of the code is in [v5-unity](v5-unity/),
-although lots of legacy documentation still resides in [v3](v3/).
+代码的最新开发版本在 [v5-unity](v5-unity/) , 尽管许多遗留文档仍然存在于 [v3](v3/) .
 
+### 快速开始
 
-### Quick Start
+```bash
+pip install bottle # 确保 bottle webserver (http://bottlepy.org/) 已安装
 
-BY FAR the most preferred way to use Python Tutor is via the official website, since it contains the latest updates: http://pythontutor.com/
-
-You can use [iframe embedding](v3/docs/embedding-HOWTO.md) to easily embed visualizations on your webpage.
-
-If you want to run locally on your own computer, to run Python visualizations try:
-
-```
-pip install bottle # make sure the bottle webserver (http://bottlepy.org/) is installed
 cd OnlinePythonTutor/v5-unity/
+# 启动服务
 python bottle_server.py
 ```
 
-You should see the visualizer at: http://localhost:8003/visualize.html
+你应该在以下位置看到可视化工具: http://localhost:8003/visualize.html
 
-... and the live programming environment at: http://localhost:8003/live.html 
+并且在线编程环境在: http://localhost:8003/live.html 
 
-However, it can be hard to run your own visualizer locally for
-non-Python languages, since there are complex dependencies in v4-cokapi/ that
-I haven't yet cleanly packaged up. By default, the local version you run will
-*call my own server to run the non-Python backends*, so please be mindful of
-your bandwidth usage.
+但是，很难在本地为非 Python 语言运行自己的可视化工具，因为 v4-cokapi 中存在复杂的依赖项，原作者还没有完全打包。
+默认情况下，你运行的本地版本将调用原作者自己的服务器来运行非 Python 后端，因此请注意你的带宽使用情况。
 
-Note: *I can't provide technical support for users who want to install Python Tutor on their own computers/servers ([read details here](https://github.com/pgbovine/OnlinePythonTutor/blob/master/unsupported-features.md)).*
+更多说明请见原 [英文文档](README_en.md) 
 
-For further directions, see [Overview for Developers](v3/docs/developer-overview.md) or explore the [rest of the docs](v3/docs/).
-
-
-### Acknowledgments
-
-For code or security contributions:
-- Irene Chen - experimental holistic visualization mode - v3/js/holistic.js
-- John DeNero - helping with the official Python 3 port, bug fixes galore
-- Mark Liffiton - localStorage bug fix
-- Chris Meyers - custom visualizations such as v3/matrix.py and v3/htmlFrame.py
-- Brad Miller - adding pop-up question dialogs to visualizations, other bug fixes
-- David Pritchard and Will Gwozdz - Java visualizer and other frontend enhancements
-- Peter Robinson - v3/make_visualizations.py
-- Peter Wentworth and his students - working on the original Python 3 fork circa 2010-2011
-- Security tips and vulnerability reports: Aaron E. (https://arinerron.com), Chris Horne (https://github.com/lahwran), Joshua Landau (joshua@landau.ws), David Wyde (https://davidwyde.com/)
-
-For user testing and feedback from instructors' perspectives:
-- Ned Batchelder
-- Jennifer Campbell
-- John Dalbey
-- John DeNero
-- Fredo Durand
-- Michael Ernst
-- David Evans
-- Paul Gries
-- Mark Guzdial
-- Adam Hartz
-- Sean Lip
-- Fernando Perez
-- Tomas Lozano-Perez
-- Bertram Ludaescher
-- Brad Miller
-- Rob Miller
-- Peter Norvig
-- Andrew Petersen
-- David Pritchard
-- Suzanne Rivoire
-- Guido van Rossum
-- Peter Wentworth
-- David Wilkins
-
-... and many, many more!
