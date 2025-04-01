@@ -22916,10 +22916,10 @@ var AbstractBaseFrontend = /** @class */ (function () {
         // so you will need to customize for your server:
         this.serverRoot = (window.location.protocol === 'https:') ?
             'https://cokapi.com/' : // my certificate for https is registered via cokapi.com, so use it for now
-            'http://cokapi.com/'; // try cokapi.com so that hopefully it works through firewalls better than directly using its IP addr (which should be 104.237.139.253)
+            'http://localhost/'; // try cokapi.com so that hopefully it works through firewalls better than directly using its IP addr (which should be 104.237.139.253)
         // (but that's just an unsubstantiated hunch)
         // randomly pick one backup server to load balance:
-        this.backupHttpServerRoot = (Math.random() >= 0.5) ? 'http://45.33.41.179/' : 'http://23.239.12.25/';
+        this.backupHttpServerRoot = (Math.random() >= 0.5) ? 'http://localhost/' : 'http://localhost/';
         // see ../../v4-cokapi/cokapi.js for details
         this.langSettingToJsonpEndpoint = {
             '2': null,
@@ -23176,6 +23176,7 @@ var AbstractBaseFrontend = /** @class */ (function () {
         }
         this.clearFrontendError();
         this.startExecutingCode(frontendOptionsObj.startingInstruction);
+		console.log("--------------------> 001");
         frontendOptionsObj.lang = pyState;
         // kludgy exceptions
         if (pyState === '2') {
@@ -23218,6 +23219,7 @@ var AbstractBaseFrontend = /** @class */ (function () {
             }
         }
         // everything below here is an ajax (async) call to the server ...
+        console.log("-------------------> jsonp_endpoint"+jsonp_endpoint);
         if (jsonp_endpoint) {
             pytutor_1.assert(pyState !== '2' && pyState !== '3');
             // 2018-08-19: this is an uncommon use case (only used for https iframe embedding)
@@ -23264,8 +23266,8 @@ var AbstractBaseFrontend = /** @class */ (function () {
                 $.ajax({
                     url: jsonp_endpoint,
                     // for testing
-                    //url: 'http://cokapi.com/test_failure_jsonp',
-                    //url: 'http://cokapi.com/unknown_url',
+                    //url: 'http://localhost:8003/test_failure_jsonp',
+                    //url: 'http://localhost:8003/unknown_url',
                     // The name of the callback parameter, as specified by the YQL service
                     jsonp: "callback",
                     dataType: "jsonp",
