@@ -8,7 +8,7 @@
 # use "docker ps -a" to see all containers
 
 # don't use 'latest' tag since that might change
-FROM ubuntu:14.04.1
+FROM ubuntu:16.04
 MAINTAINER Philip Guo <philip@pgbovine.net>
 
 # if apt-get doesn't work, then follow these instructions:
@@ -21,15 +21,27 @@ RUN apt-get update && apt-get install -y \
   build-essential \
   autotools-dev \
   automake \
+  autoconf \
+  libtool \
   libc6-dbg \
-  python
+  python \
+  wget \
+  bzip2 \
+  perl \
+  texinfo \
+  make
 
 RUN mkdir /tmp/opt-cpp-backend
 ADD . /tmp/opt-cpp-backend
 
 # we need to compile Valgrind from scratch within the container (hence
 # 'make clean' first) to make it work from within the container, ergh
-RUN cd /tmp/opt-cpp-backend/valgrind-3.11.0 && make clean && ./autogen.sh && ./configure --prefix=`pwd`/inst && make && make install
+RUN cd /tmp/opt-cpp-backend/valgrind-3.11.0 && \
+    autoreconf -fiv && \
+    ./configure --prefix=`pwd`/inst && \
+    make clean && \
+    make && \
+    make install
 
 RUN useradd netuser
 
